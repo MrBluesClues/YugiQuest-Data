@@ -1,0 +1,87 @@
+/*
+package com.example.excelconverter;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class ExcelToJsonConverter {
+public static void main(String[] args) {
+// Define file paths
+String excelFilePath = "C:\\Users\\Mateo\\Documents\\Aden\\Yugi Names Database.xlsx";
+String jsonFilePath = "D:\\stuff\\CODE PROJECTS\\cardDatabase.json";
+
+// List to hold card data
+List<Map<String, Object>> cards = new ArrayList<>();
+
+// Read Excel file
+try (FileInputStream fis = new FileInputStream(excelFilePath);
+Workbook workbook = new XSSFWorkbook(fis)) {
+
+Sheet sheet = workbook.getSheetAt(0); // Assuming the first sheet is the relevant one
+for (Row row : sheet) {
+if (row.getRowNum() == 0) {
+// Skip the header row
+continue;
+}
+
+// Reading cell values
+Cell idCell = row.getCell(0);
+Cell nameCell = row.getCell(1);
+int id = 0;
+String name = null;
+
+if (idCell != null) {
+if (idCell.getCellType() == CellType.NUMERIC) {
+id = (int) idCell.getNumericCellValue();
+} else if (idCell.getCellType() == CellType.STRING) {
+id = Integer.parseInt(idCell.getStringCellValue());
+}
+}
+
+if (nameCell != null) {
+if (nameCell.getCellType() == CellType.STRING) {
+name = nameCell.getStringCellValue();
+} else if (nameCell.getCellType() == CellType.NUMERIC) {
+name = String.valueOf(nameCell.getNumericCellValue());
+}
+}
+
+String imagePath = "textures/item/" + id + ".png"; // Construct relative path
+
+// Create a map for the card
+Map<String, Object> card = new HashMap<>();
+card.put("id", id);
+card.put("name", name);
+card.put("image", imagePath);
+cards.add(card);
+}
+
+} catch (IOException e) {
+e.printStackTrace();
+}
+
+// Convert the list to JSON and write to file
+Gson gson = new GsonBuilder().setPrettyPrinting().create();
+try (FileWriter writer = new FileWriter(jsonFilePath)) {
+gson.toJson(cards, writer);
+} catch (IOException e) {
+e.printStackTrace();
+}
+
+System.out.println("JSON file created successfully.");
+}
+}
+
+*/
